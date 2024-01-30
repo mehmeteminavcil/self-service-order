@@ -24,7 +24,6 @@ const Header = () => {
           <span>4</span>
         </div>
       </nav>
-      <Categories />
     </header>
   );
 };

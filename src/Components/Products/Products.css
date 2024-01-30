@@ -1,0 +1,14 @@
+.products-container{
+    margin: 40px 0;
+}
+
+.products-container > h2{
+    color: #000;
+    font-size: 36px;
+}
+
+.products{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }

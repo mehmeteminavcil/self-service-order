@@ -1,0 +1,63 @@
+.hero{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 40px;
+  padding: 0 46px;
+  height: 140px;
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+  object-fit: cover;
+  
+
+    
+    
+}
+
+.hero img{
+  position: absolute;
+  width: 110%;
+  left: -20px;
+  object-fit: cover;
+  z-index: -1;
+  margin-top: -190px;
+
+}
+.hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.263); /* Adjust the last parameter for the opacity (0 to 1) */
+    z-index: 1;
+  }
+
+.hero h1{
+    font-size: 64px;
+}
+
+.hero p{
+color: #FFEBCE;
+font-size: 24px;
+}
+
+.hero .left > h1 {
+color: #fff;
+}
+
+.hero .right{
+    display: flex;
+    gap: 20px;
+}
+
+.hero .right  h1{
+    color: #F5A62E;
+}
+
+.hero > div {
+    z-index: 99;
+}
+
