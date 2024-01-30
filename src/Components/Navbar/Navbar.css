@@ -1,0 +1,19 @@
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 30px;
+    border-bottom: 1px solid #ddd;
+}
+
+.navbar .nav-links{
+    display: flex;
+    list-style: none;
+    gap: 20px;
+    text-transform: uppercase;
+
+}
+
+.navbar .nav-links li {
+    cursor: pointer;
+}
