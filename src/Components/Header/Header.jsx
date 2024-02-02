@@ -3,7 +3,6 @@ import hamburger_icon from "../../assets/icons/Hamburger.png";
 import search_icon from "../../assets/icons/Search.png";
 import home_icon from "../../assets/icons/Home.png";
 import cart_icon from "../../assets/icons/Cart.png";
-import Categories from "../Categories/Categories";
 
 const Header = ({ toggleCart }) => {
   return (

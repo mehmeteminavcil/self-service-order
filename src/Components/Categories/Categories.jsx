@@ -18,6 +18,14 @@ const Categories = () => {
           <img src={ham_icon} alt="" />
           <span>Pizza</span>
         </li>
+        <li className="category">
+          <img src={ham_icon} alt="" />
+          <span>Pizza</span>
+        </li>
+        <li className="category">
+          <img src={ham_icon} alt="" />
+          <span>Pizza</span>
+        </li>
         <li className="category active">
           <img src={ham_icon} alt="" />
           <span>Pizza</span>

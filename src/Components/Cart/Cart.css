@@ -15,6 +15,7 @@
     
 }
 
+
 .cart-title{
     font-size: 36px;
     margin-top: 20px;
@@ -69,4 +70,5 @@
     color: #FFF;
 background: var(--primary-gradient, linear-gradient(109deg, #F9881F 23.73%, #FF774C 79.34%));
 border: none;
+cursor: pointer;
 }
