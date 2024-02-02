@@ -5,7 +5,7 @@ import home_icon from "../../assets/icons/Home.png";
 import cart_icon from "../../assets/icons/Cart.png";
 import Categories from "../Categories/Categories";
 
-const Header = () => {
+const Header = ({ toggleCart }) => {
   return (
     <header className="header">
       <nav>
@@ -20,7 +20,7 @@ const Header = () => {
           <img src={home_icon} alt="" />
         </div>
         <div className="btn cart active">
-          <img src={cart_icon} alt="" />
+          <img src={cart_icon} alt="" onClick={toggleCart} />
           <span>4</span>
         </div>
       </nav>

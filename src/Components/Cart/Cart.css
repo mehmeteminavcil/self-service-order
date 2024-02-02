@@ -1,0 +1,72 @@
+.cart-container{
+    max-width: 375px;
+    min-width: 340px;
+    height: 100vh;
+    border-radius: 50px;
+    background: #fff;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 100;
+    gap: 18px;
+    transition: all .3s ease;
+   
+    
+}
+
+.cart-title{
+    font-size: 36px;
+    margin-top: 20px;
+}
+
+.cart-items-container {
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    padding: 2px;
+}
+
+.bill {
+    padding: 6px 15px 6px 20px;
+    border-radius: 20px;
+    border: 2px solid #F5A62E;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    
+}
+
+.bill div {
+    display: flex;
+    justify-content: space-between;
+}
+
+.bill .bill-text{
+    color: #585858;
+    font-size: 24px;
+}
+
+.bill .bill-number {
+    color: #3B3A3A;
+    font-size: 24px;
+}
+
+.bill .tax {
+    color: #FE5F55;
+}
+
+.pay-btn{
+    
+    padding: 15px 100px;
+    width: 100%;
+    border-radius: 20px;
+    font-size: 36px;
+    color: #FFF;
+background: var(--primary-gradient, linear-gradient(109deg, #F9881F 23.73%, #FF774C 79.34%));
+border: none;
+}
