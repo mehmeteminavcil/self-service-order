@@ -1,23 +1,21 @@
 import "./ProductCard.css";
-import ham_1 from "../../assets/products/ham1.png";
 import star_icon from "../../assets/products/star.png";
 
-const ProductCard = () => {
+const ProductCard = ({ img, title, desc, price, rate, handleAddToCart }) => {
   return (
     <div className="card-container">
-      <img src={ham_1} alt="" />
-      <h3>The Jalapeno Popper Show</h3>
-      <p>
-        The Jalapeno Popper Show is a Mexican Chicken Burger topped with
-        jalapeno-infused cream cheese.
-      </p>
+      <img src={img} alt="" />
+      <h3>{title}</h3>
+      <p>{desc}</p>
       <div className="bottom">
         <div className="rating">
           <img src={star_icon} alt="star icon" />
-          <span>4.4</span>
+          <span>{rate}</span>
         </div>
-        <span className="price">$14.99</span>
-        <span className="add-to-cart">+</span>
+        <span className="price">${price}</span>
+        <span className="add-to-cart" onClick={handleAddToCart}>
+          +
+        </span>
       </div>
     </div>
   );

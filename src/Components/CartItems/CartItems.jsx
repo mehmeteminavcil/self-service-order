@@ -1,18 +1,34 @@
 import "./CartItems.css";
 import burger from "../../assets/products/ham1.png";
 
-const CartItems = () => {
+const CartItems = ({
+  img,
+  title,
+  price,
+  quantity,
+  increaseQuantity,
+  decreaseQuantity,
+  removeItem,
+}) => {
   return (
     <div className="cart-items">
+      <span className="remove-item" onClick={removeItem}>
+        x
+      </span>
+
       <img src={burger} alt="" />
       <div className="middle">
-        <span className="order-title">The Brooklyn</span>
+        <span className="order-title">{title}</span>
         <div className="last">
-          <span className="order-price">$19.99</span>
+          <span className="order-price">${price}</span>
           <div className="order-count">
-            <span className="circle">-</span>
-            <span>2</span>
-            <span className="circle">+</span>
+            <span className="circle" onClick={decreaseQuantity}>
+              -
+            </span>
+            <span>{quantity}</span>
+            <span className="circle" onClick={increaseQuantity}>
+              +
+            </span>
           </div>
         </div>
       </div>

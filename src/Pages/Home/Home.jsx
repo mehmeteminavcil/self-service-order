@@ -16,7 +16,7 @@ const Home = () => {
     <div>
       <section className="main">
         <div className="mainmain">
-          <Header toggleCart={toggleCart} />
+          <Header toggleCart={toggleCart} isCartVisible={isCartVisible} />
           <Hero />
           <Categories />
           <Products />

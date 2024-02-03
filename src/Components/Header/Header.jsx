@@ -4,7 +4,7 @@ import search_icon from "../../assets/icons/Search.png";
 import home_icon from "../../assets/icons/Home.png";
 import cart_icon from "../../assets/icons/Cart.png";
 
-const Header = ({ toggleCart }) => {
+const Header = ({ toggleCart, isCartVisible }) => {
   return (
     <header className="header">
       <nav>
@@ -18,7 +18,7 @@ const Header = ({ toggleCart }) => {
         <div className="btn home">
           <img src={home_icon} alt="" />
         </div>
-        <div className="btn cart active">
+        <div className={isCartVisible ? "btn cart active" : "btn cart"}>
           <img src={cart_icon} alt="" onClick={toggleCart} />
           <span>4</span>
         </div>
