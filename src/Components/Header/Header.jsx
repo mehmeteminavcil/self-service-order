@@ -3,8 +3,11 @@ import hamburger_icon from "../../assets/icons/Hamburger.png";
 import search_icon from "../../assets/icons/Search.png";
 import home_icon from "../../assets/icons/Home.png";
 import cart_icon from "../../assets/icons/Cart.png";
+import { useCart } from "../../Context/CartContext";
 
 const Header = ({ toggleCart, isCartVisible }) => {
+  const { cart } = useCart();
+
   return (
     <header className="header">
       <nav>
@@ -20,7 +23,7 @@ const Header = ({ toggleCart, isCartVisible }) => {
         </div>
         <div className={isCartVisible ? "btn cart active" : "btn cart"}>
           <img src={cart_icon} alt="" onClick={toggleCart} />
-          <span>4</span>
+          <span>{cart.length}</span>
         </div>
       </nav>
     </header>

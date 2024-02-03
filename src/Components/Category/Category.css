@@ -1,0 +1,44 @@
+
+.categories .category{
+    position: relative;
+    width: 120px;
+    height: 120px;
+    border: 1px solid #3ec032;
+    border-radius: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 0.6;
+    
+}
+.background-circle{
+    position: absolute;
+    color: red;
+    width:100px ;
+    height: 100px;
+    background:rgba(20, 28, 189, 0.402) ;
+    border-radius:50% ;
+    z-index: -1;
+
+}
+
+.category.active{
+    opacity: 1;
+}
+
+
+
+.category img{
+max-width: 50px;
+height: 50px;
+z-index: 99;
+
+
+}
+
+.category span{
+margin-top: 2px;
+font-weight: 600;
+}

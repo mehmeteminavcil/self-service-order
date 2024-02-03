@@ -16,7 +16,7 @@ const CartItems = ({
         x
       </span>
 
-      <img src={burger} alt="" />
+      <img src={img} alt="" />
       <div className="middle">
         <span className="order-title">{title}</span>
         <div className="last">

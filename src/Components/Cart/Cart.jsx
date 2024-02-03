@@ -26,6 +26,7 @@ const Cart = () => {
         {cart.map((item) => (
           <CartItems
             key={item.id}
+            img={item.img}
             title={item.title}
             price={item.price}
             quantity={item.quantity}

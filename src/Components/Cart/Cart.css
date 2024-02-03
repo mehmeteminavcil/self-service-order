@@ -4,7 +4,7 @@
     height: 100vh;
     border-radius: 50px;
     background: #fff;
-    padding: 20px;
+    padding: 20px 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -24,12 +24,29 @@
 .cart-items-container {
     height: 100%;
     width: 100%;
-    overflow: auto;
     display: flex;
     flex-direction: column;
     gap: 18px;
     padding: 2px;
+    overflow: auto;
 }
+
+
+
+.cart-items-container::-webkit-scrollbar {
+    width: 4px; 
+  }
+  
+  .cart-items-container::-webkit-scrollbar-thumb {
+    background-color: #cfcfcf; 
+    border-radius: 6px; 
+  }
+  
+  .cart-items-container::-webkit-scrollbar-track {
+    background-color: #f1f1f1; 
+  }
+  
+  
 
 .bill {
     padding: 6px 15px 6px 20px;

@@ -1,36 +1,29 @@
 import "./Categories.css";
-import ham_icon from "../../assets/icons/ham.png";
+import categoriesData from "../../data/categories";
+import Category from "../Category/Category";
+import Products from "../Products/Products";
+import { useState } from "react";
 
 const Categories = () => {
+  const [selectedCategory, setSelectedCategory] = useState("Burger");
+
+  console.log(selectedCategory);
+
   return (
     <div className="categories-container">
       <ul className="categories">
-        <li className="category">
-          <img src={ham_icon} alt="" />
-          <span>Pizza</span>
-        </li>
-
-        <li className="category">
-          <img src={ham_icon} alt="" />
-          <span>Pizza</span>
-        </li>
-        <li className="category">
-          <img src={ham_icon} alt="" />
-          <span>Pizza</span>
-        </li>
-        <li className="category">
-          <img src={ham_icon} alt="" />
-          <span>Pizza</span>
-        </li>
-        <li className="category">
-          <img src={ham_icon} alt="" />
-          <span>Pizza</span>
-        </li>
-        <li className="category active">
-          <img src={ham_icon} alt="" />
-          <span>Pizza</span>
-        </li>
+        {categoriesData.map((category) => (
+          <Category
+            key={category.id}
+            img={category.img}
+            name={category.name}
+            color={category.color}
+            active={selectedCategory === category.name}
+            handleOnClick={() => setSelectedCategory(category.name)}
+          />
+        ))}
       </ul>
+      <Products category={selectedCategory} />
     </div>
   );
 };

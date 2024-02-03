@@ -4,7 +4,9 @@ import star_icon from "../../assets/products/star.png";
 const ProductCard = ({ img, title, desc, price, rate, handleAddToCart }) => {
   return (
     <div className="card-container">
-      <img src={img} alt="" />
+      <div className="img-container">
+        <img src={img} alt="" />
+      </div>
       <h3>{title}</h3>
       <p>{desc}</p>
       <div className="bottom">

@@ -1,15 +1,18 @@
 import ProductCard from "../ProductCards/ProductCard";
 import "./Products.css";
-import data from "../../data/products";
 import { useCart } from "../../Context/CartContext";
+import productsData from "../../data/products";
 
-const Products = () => {
+const Products = ({ category }) => {
   const { addToCart } = useCart();
+
+  const filteredData = productsData.filter((item) => item.name === category);
+
   return (
     <div className="products-container">
-      <h2>Burger</h2>
+      <h2>{category}</h2>
       <div className="products">
-        {data.map((product) => (
+        {filteredData.map((product) => (
           <ProductCard
             key={product.id}
             img={product.img}
