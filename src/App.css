@@ -31,15 +31,15 @@ height: 100vh;
 
 
 .mainmain::-webkit-scrollbar {
-  width: 4px; /* Width of the scrollbar */
+  width: 4px; 
 }
 
 .mainmain::-webkit-scrollbar-thumb {
-  background-color: #cfcfcf; /* Color of the thumb */
-  border-radius: 6px; /* Roundness of the thumb */
+  background-color: #cfcfcf; 
+  border-radius: 6px; 
 }
 
 .mainmain::-webkit-scrollbar-track {
-  background-color: #f1f1f1; /* Color of the track */
+  background-color: #f1f1f1; 
 }
 

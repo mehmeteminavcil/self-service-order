@@ -1,0 +1,32 @@
+.admin-container{
+    height: 100vh;
+    background-color: azure;
+    padding: 40px;
+    display: flex;
+    gap: 20px;
+}
+
+.admin-container .left{
+    max-width: 240px;
+    border-right: 1px solid #ccc;
+    height: 100%;
+}
+.admin-container .left  ul{
+list-style: none;
+display: flex;;
+flex-direction: column;
+gap: 20px;
+}
+
+.admin-container .left  ul li {
+    font-size: 24px;
+    cursor: pointer;    
+}
+
+
+.admin-container .right {
+background-color: #fff;
+height: 100%;
+width: 100%;
+
+}

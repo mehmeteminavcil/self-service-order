@@ -1,30 +1,19 @@
-import { useState } from "react";
 import "./App.css";
-import Cart from "./Components/Cart/Cart";
-import Categories from "./Components/Categories/Categories";
-import Header from "./Components/Header/Header";
-import Hero from "./Components/Hero/Hero";
-import Products from "./Components/Products/Products";
 
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from "./Pages/Home/Home";
+import Login from "./Pages/Login/Login";
+import Admin from "./Pages/Admin/Admin";
 const App = () => {
-  const [isCartVisible, setIsCartVisible] = useState(false);
-
-  const toggleCart = () => {
-    setIsCartVisible(!isCartVisible);
-  };
-
   return (
-    <div className="app-container">
-      <section className="main">
-        <div className="mainmain">
-          <Header toggleCart={toggleCart} />
-          <Hero />
-          <Categories />
-          <Products />
-        </div>
-
-        {isCartVisible && <Cart />}
-      </section>
+    <div>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/admin" element={<Admin />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 };
