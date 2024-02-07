@@ -3,6 +3,8 @@ import User from "../models/User.js"
 import AES from "crypto-js/aes.js";
 import CryptoJS from "crypto-js"
 
+import jwt from "jsonwebtoken"
+
 
 const router = express.Router()
 
@@ -36,15 +38,30 @@ router.post( '/login', async (req,res)=>{
 
         const hashedPassword = AES.decrypt(user.password, process.env.PASS_SEC)
 
-        const password = hashedPassword.toString(CryptoJS.enc.Utf8)
+        const basePassword = hashedPassword.toString(CryptoJS.enc.Utf8)
 
-        if(password !== req.body.password){
+        if(basePassword !== req.body.password){
 
             return res.status(401).json("wrong credentials")
         }
-      
 
-        res.status(200).json(user);
+
+        const accessToken = jwt.sign(
+            {
+            id:user._id,
+            isAdmin:user.isAdmin,
+        },
+        process.env.JWT_SEC ,{expiresIn:"3h"}
+        )
+
+      
+        const { password, ...others } = user._doc; //for mongodb  to not show the password in response
+       
+
+
+
+
+        res.status(200).json({...others,accessToken});
 
     }catch(err){
         res.status(500).json(err)
