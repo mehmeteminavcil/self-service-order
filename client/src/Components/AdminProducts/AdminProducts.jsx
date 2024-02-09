@@ -1,30 +1,38 @@
 import "./AdminProducts.css";
 import productsData from "../../data/products";
-import categoriesData from "../../data/categories";
-import ProductCard from "../ProductCards/ProductCard";
-import Category from "../Category/Category";
-import { useState } from "react";
-import Products from "../Products/Products";
+
 const AdminProducts = () => {
-  const [selectedCategory, setSelectedCategory] = useState("Burger");
+  const groupProductsByName = (products) => {
+    const groupedProducts = {};
+    products.forEach((product) => {
+      if (!groupedProducts[product.name]) {
+        groupedProducts[product.name] = [];
+      }
+      groupedProducts[product.name].push(product);
+    });
+    return groupedProducts;
+  };
+
+  const groupedProducts = groupProductsByName(productsData);
 
   return (
-    <div>
-      <div className="categories-container">
-        <ul className="categories">
-          {categoriesData.map((category) => (
-            <Category
-              key={category.id}
-              img={category.img}
-              name={category.name}
-              color={category.color}
-              active={selectedCategory === category.name}
-              handleOnClick={() => setSelectedCategory(category.name)}
-            />
+    <div className="admin_products">
+      <h1>Products</h1>
+      {Object.keys(groupedProducts).map((name) => (
+        <div key={name}>
+          <h1 className="product_title">{name}</h1>
+          {groupedProducts[name].map((product) => (
+            <div className="admin_products-container" key={product.id}>
+              <h2>{product.title}</h2>
+              <img src={product.img} alt={product.title} />
+              <p>{product.desc}</p>
+              <p>Price: ${product.price}</p>
+              <p>Rating: {product.rate}</p>
+              <p>Edit</p>
+            </div>
           ))}
-        </ul>
-        <Products category={selectedCategory} />
-      </div>
+        </div>
+      ))}
     </div>
   );
 };

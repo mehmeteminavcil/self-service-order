@@ -1,20 +1,18 @@
 .admin-container{
-    height: 100vh;
-    display: flex;
+    display: grid;
+    grid-template-columns: 240px 4fr;
 
 }
 
 .admin-container .left{
-    max-width: 240px;
-    height: 100%;
+ 
 }
 
 
 
 .admin-container .right {
     padding: 30px;
-background-color: #fff;
-height: 100%;
-width: 100%;
+   
+   
 
 }

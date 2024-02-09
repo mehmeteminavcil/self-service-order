@@ -1,21 +1,22 @@
 .admin-sidebar_container {
-    height: 100%;
+    position: fixed;
     background-color: #333;
     color: #fff;
     display: flex;
     flex-direction: column;
     padding: 20px;
+    height: 100%;
+    width: 240px;
+    
+   
   }
   
-  .admin-sidebar_container h1 {
-    margin-top: 0;
-  }
+ 
   
   .admin-sidebar_container ul {
     margin-top: 60px;
     list-style: none;
     padding: 0;
-    flex: 1;
   }
   
   .admin-sidebar_container li {
