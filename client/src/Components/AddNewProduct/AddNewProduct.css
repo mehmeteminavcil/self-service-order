@@ -1,0 +1,6 @@
+.add_new-product {
+    position: absolute;
+    z-index: 999;
+    background: #fff;
+    padding: 20px;
+}

@@ -1,7 +1,11 @@
 import "./AdminProducts.css";
 import productsData from "../../data/products";
+import { useState } from "react";
+import AddNewProduct from "../AddNewProduct/AddNewProduct";
 
 const AdminProducts = () => {
+  const [addNewWindow, setAddNewWindow] = useState(false);
+
   const groupProductsByName = (products) => {
     const groupedProducts = {};
     products.forEach((product) => {
@@ -17,7 +21,11 @@ const AdminProducts = () => {
 
   return (
     <div className="admin_products">
-      <h1>Products</h1>
+      {addNewWindow ? <AddNewProduct /> : ""}
+      <div className="admin_products-top">
+        <h1>Products</h1>
+        <div onClick={() => setAddNewWindow(!addNewWindow)}>+ Add New</div>
+      </div>
       {Object.keys(groupedProducts).map((name) => (
         <div key={name}>
           <h1 className="product_title">{name}</h1>

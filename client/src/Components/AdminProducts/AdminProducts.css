@@ -1,3 +1,17 @@
+.admin_products-top{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.admin_products-top div {
+    padding: 8px;
+    background: rgb(4, 180, 142);
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+}
+
 .admin_products .product_title{
     margin: 40px 0;
     font-size: 24px;
