@@ -4,6 +4,7 @@ import search_icon from "../../assets/icons/Search.png";
 import home_icon from "../../assets/icons/Home.png";
 import cart_icon from "../../assets/icons/Cart.png";
 import { useCart } from "../../Context/CartContext";
+import { Link } from "react-router-dom";
 
 const Header = ({ toggleCart, isCartVisible }) => {
   const { cart } = useCart();
@@ -19,7 +20,9 @@ const Header = ({ toggleCart, isCartVisible }) => {
           <input type="text" placeholder="Search" />
         </div>
         <div className="btn home">
-          <img src={home_icon} alt="" />
+          <Link to="/admin">
+            <img src={home_icon} alt="" />
+          </Link>
         </div>
         <div className={isCartVisible ? "btn cart active" : "btn cart"}>
           <img src={cart_icon} alt="" onClick={toggleCart} />
