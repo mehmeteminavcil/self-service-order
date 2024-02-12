@@ -1,6 +1,11 @@
 .add_new-product {
+    width: 80%;
+    height: 80%;
+
     position: absolute;
     z-index: 999;
     background: #fff;
-    padding: 20px;
+    padding: 10px;
+    border-radius: 30px;
+
 }
