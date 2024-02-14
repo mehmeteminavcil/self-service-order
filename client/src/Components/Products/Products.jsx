@@ -33,7 +33,7 @@ const Products = ({ category }) => {
         {filteredData.map((product) => (
           <ProductCard
             key={product._id}
-            img={`http://localhost:8080/${product.image}`}
+            img={`${config.API_URL}${product.image}`}
             title={product.name}
             desc={product.desc}
             price={product.price}
