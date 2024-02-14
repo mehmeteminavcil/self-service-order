@@ -2,6 +2,7 @@ import ProductCard from "../ProductCards/ProductCard";
 import "./Products.css";
 import { useCart } from "../../Context/CartContext";
 import { useEffect, useState } from "react";
+import config from "../../configuration/config.js";
 
 const Products = ({ category }) => {
   const { addToCart } = useCart();
@@ -11,10 +12,9 @@ const Products = ({ category }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await fetch("http://localhost:8080/api/products");
+        const res = await fetch(config.API_URL + "api/products");
         const data = await res.json();
         setProductsData(data);
-        console.log(productsData);
       } catch (err) {
         console.log("Error fetching data", err);
       }
@@ -25,8 +25,6 @@ const Products = ({ category }) => {
   const filteredData = productsData.filter(
     (item) => item.category === category
   );
-
-  console.log(filteredData);
 
   return (
     <div className="products-container">
