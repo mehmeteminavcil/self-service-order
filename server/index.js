@@ -28,7 +28,8 @@ app.use(express.static(join(__dirname, '/')));
 app.use(express.json())
 app.use(cors({
     // origin: "http://localhost:5173"
-    origin: "https://self-service-order-backend.onrender.com"
+    origin: "https://self-service-order-liard.vercel.app"
+
 }))
 
 
