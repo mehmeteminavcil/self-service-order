@@ -27,11 +27,15 @@ app.use(express.static(join(__dirname, '/')));
 //middleware
 app.use(express.json())
 app.use(cors({
-    origin: "http://localhost:5173"
+    // origin: "http://localhost:5173"
+    origin: "https://self-service-order-backend.onrender.com"
 }))
 
 
 
+app.get("/",(req,res)=>{
+    res.send("Hello World")
+})
 
 
 app.use("/api/auth",authRoute)
