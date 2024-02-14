@@ -1,10 +1,14 @@
 import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv"
-import multer from "multer"
+import cors from "cors"
 import userRoute from "./routes/user.js"
 import authRoute from "./routes/auth.js"
-import  productRoute from './routes/products.js'
+import productRoute from './routes/products.js'
+import { dirname, join } from 'path';
+import { fileURLToPath } from 'url';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 const app = express()
 
@@ -17,33 +21,26 @@ mongoose.connect(process.env.MONGO_URL)
 })
 
 
+app.use(express.static(join(__dirname, '/')));
+
+
 //middleware
 app.use(express.json())
+app.use(cors({
+    origin: "http://localhost:5173"
+}))
 
-const storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-        cb(null,"public/products")
-    },
-    filename:(req,file,cb)=>{
-        cb(null,file.originalname)
-    }
-})
 
-const upload = multer({storage});
 
-app.post("/api/upload",upload.single("file"),(req,res)=>{
-    try {
-        return res.status(200).json("file uploaded")
-    } catch (error) {n
-        console.log(error)
-    }
-})
+
 
 app.use("/api/auth",authRoute)
 app.use("/api/users",userRoute)
 app.use("/api/products",productRoute)
 
+
+
 app.listen(process.env.PORT || 5000, () => {
-    console.log("connected backend...")
+    console.log("connected backend..." + process.env.PORT)
 })
 
