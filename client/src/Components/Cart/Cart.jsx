@@ -1,4 +1,5 @@
 import { useCart } from "../../Context/CartContext";
+import config from "../../configuration/config";
 import CartItems from "../CartItems/CartItems";
 import "./Cart.css";
 
@@ -19,15 +20,39 @@ const Cart = () => {
 
   const totalPrice = subTotal + tax;
 
+  const stripe_sec_key =
+    "pk_test_51Mz7ggHlxNfkUvkRIMWgEeqsGwXXAt1iDwfv8CtEqDYYA4I5sduZnJqDxf8FpcpLgqVRwh0nti0rvdBIqLiH7EZ700Qtl4XFxu";
+
+  const handlePayment = async () => {
+    console.log(cart);
+    console.log(`${config.API_URL}stripe/create-checkout-session`);
+
+    // try {
+    //   const res = await fetch("http://localhost:8080/api/stripe/checkout", {
+    //     method: "POST",
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //       Authorization: stripe_sec_key,
+    //     },
+    //     body: JSON.stringify(cart),
+    //   });
+    //   if (res) {
+    //     return res.json();
+    //   }
+    // } catch (err) {
+    //   console.log(err);
+    // }
+  };
+
   return (
     <div className="cart-container">
       <span className="cart-title">Your Cart</span>
       <div className="cart-items-container">
         {cart.map((item) => (
           <CartItems
-            key={item.id}
-            img={item.img}
-            title={item.title}
+            key={item._id}
+            img={`${config.API_URL}${item.image}`}
+            title={item.name}
             price={item.price}
             quantity={item.quantity}
             increaseQuantity={() => incrementQuantity(item)}
@@ -52,7 +77,9 @@ const Cart = () => {
         </div>
       </div>
 
-      <button className="pay-btn">Pay!</button>
+      <button onClick={handlePayment} className="pay-btn">
+        Pay!
+      </button>
     </div>
   );
 };

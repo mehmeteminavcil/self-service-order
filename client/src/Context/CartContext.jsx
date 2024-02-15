@@ -18,14 +18,14 @@ const cartReducer = (state, action) => {
   switch (action.type) {
     case "ADD_TO_CART": {
       const existingItemIndex = state.cartItems.findIndex(
-        (item) => item.id === action.payload.id
+        (item) => item._id === action.payload._id
       );
       if (existingItemIndex !== -1) {
         // If item exists, update its quantity using separate action
         return {
           ...state,
           cartItems: state.cartItems.map((item) =>
-            item.id === action.payload.id
+            item._id === action.payload._id
               ? { ...item, quantity: item.quantity + 1 }
               : item
           ),
@@ -43,7 +43,7 @@ const cartReducer = (state, action) => {
       return {
         ...state,
         cartItems: state.cartItems.filter(
-          (item) => item.id !== action.payload.id
+          (item) => item._id !== action.payload._id
         ),
       };
     }
@@ -52,7 +52,7 @@ const cartReducer = (state, action) => {
       return {
         ...state,
         cartItems: state.cartItems.map((item) =>
-          item.id === action.payload.id
+          item._id === action.payload._id
             ? { ...item, quantity: item.quantity + 1 }
             : item
         ),
@@ -63,7 +63,7 @@ const cartReducer = (state, action) => {
       return {
         ...state,
         cartItems: state.cartItems.map((item) =>
-          item.id === action.payload.id
+          item._id === action.payload._id
             ? { ...item, quantity: Math.max(item.quantity - 1, 1) }
             : item
         ),
