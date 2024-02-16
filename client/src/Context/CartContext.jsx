@@ -69,6 +69,12 @@ const cartReducer = (state, action) => {
         ),
       };
     }
+    case "DELETE_ALL_PRODUCTS": {
+      return {
+        ...state,
+        cartItems: [],
+      };
+    }
 
     default:
       return state;
@@ -94,6 +100,10 @@ const CartProvider = ({ children }) => {
     dispatch({ type: "DECREMENT_QUANTITY", payload: item });
   };
 
+  const deleteAllProducts = () => {
+    dispatch({ type: "DELETE_ALL_PRODUCTS" });
+  };
+
   const total = calculateTotalPrice(state.cartItems);
 
   return (
@@ -104,6 +114,7 @@ const CartProvider = ({ children }) => {
         removeFromCart,
         incrementQuantity,
         decrementQuantity,
+        deleteAllProducts,
         total,
       }}
     >

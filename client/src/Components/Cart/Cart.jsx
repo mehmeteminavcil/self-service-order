@@ -1,15 +1,19 @@
+import { useState } from "react";
 import { useCart } from "../../Context/CartContext";
 import config from "../../configuration/config";
 import CartItems from "../CartItems/CartItems";
 import "./Cart.css";
 
 const Cart = () => {
+  const [isLoading, setIsLoading] = useState(false);
+
   const {
     cart,
     total,
     removeFromCart,
     incrementQuantity,
     decrementQuantity,
+    deleteAllProducts,
   } = useCart();
 
   const subTotal = total;
@@ -19,47 +23,50 @@ const Cart = () => {
   const tax = subTotal * taxRate;
 
   const totalPrice = subTotal + tax;
-
-  const stripe_sec_key =
-    "pk_test_51Mz7ggHlxNfkUvkRIMWgEeqsGwXXAt1iDwfv8CtEqDYYA4I5sduZnJqDxf8FpcpLgqVRwh0nti0rvdBIqLiH7EZ700Qtl4XFxu";
-
-  const handlePayment = async () => {
+  const handlePayButton = () => {
+    // deleteAllProducts();
+    setIsLoading(!isLoading);
     console.log(cart);
-    console.log(`${config.API_URL}stripe/create-checkout-session`);
-
-    // try {
-    //   const res = await fetch("http://localhost:8080/api/stripe/checkout", {
-    //     method: "POST",
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //       Authorization: stripe_sec_key,
-    //     },
-    //     body: JSON.stringify(cart),
-    //   });
-    //   if (res) {
-    //     return res.json();
-    //   }
-    // } catch (err) {
-    //   console.log(err);
-    // }
   };
 
   return (
     <div className="cart-container">
       <span className="cart-title">Your Cart</span>
+
       <div className="cart-items-container">
-        {cart.map((item) => (
-          <CartItems
-            key={item._id}
-            img={`${config.API_URL}${item.image}`}
-            title={item.name}
-            price={item.price}
-            quantity={item.quantity}
-            increaseQuantity={() => incrementQuantity(item)}
-            decreaseQuantity={() => decrementQuantity(item)}
-            removeItem={() => removeFromCart(item)}
-          />
-        ))}
+        {!isLoading && (
+          <>
+            {cart.map((item) => (
+              <CartItems
+                key={item._id}
+                img={`${config.API_URL}${item.image}`}
+                title={item.name}
+                price={item.price}
+                quantity={item.quantity}
+                increaseQuantity={() => incrementQuantity(item)}
+                decreaseQuantity={() => decrementQuantity(item)}
+                removeItem={() => removeFromCart(item)}
+              />
+            ))}
+          </>
+        )}
+        {isLoading && (
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              flexDirection: "column",
+            }}
+          >
+            <img
+              style={{ width: "100%" }}
+              src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExdDJ0dGhlem4xcnA0NHFwN29oZTBla2hucThlaGRrczc0aXlidzV4YSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/gJ3mEToTDJn3LT6kCT/giphy.gif"
+              alt=""
+            />
+            <p>Loading...</p>
+          </div>
+        )}
       </div>
 
       <div className="bill">
@@ -77,7 +84,12 @@ const Cart = () => {
         </div>
       </div>
 
-      <button onClick={handlePayment} className="pay-btn">
+      <button
+        style={{ opacity: isLoading ? 0.2 : 1 }}
+        onClick={handlePayButton}
+        className="pay-btn"
+        disabled={isLoading}
+      >
         Pay!
       </button>
     </div>
